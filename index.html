@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Linta & Nijo — Wedding Invitation</title>
+<style>
+  :root{--accent:#b02e2e;--muted:#6b6b6b;--bg:#f8f6f3}
+  *{box-sizing:border-box}
+  body{font-family:system-ui,-apple-system,Segoe UI,Roboto,'Noto Sans',Helvetica,Arial;line-height:1.5;margin:0;background:linear-gradient(180deg,#fff 0%,var(--bg) 100%);color:#222}
+  .container{max-width:920px;margin:36px auto;padding:24px}
+  .card{background:#fff;border-radius:14px;box-shadow:0 8px 30px rgba(20,20,20,0.06);overflow:hidden;padding:28px}
+  .names{font-size:clamp(26px,4vw,40px);font-weight:700;margin:6px 0}
+  .subtitle{color:var(--muted);margin-bottom:18px}
+  .details{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px}
+  .detail{background:#fbfbfb;padding:12px;border-radius:8px}
+  .btn{display:inline-block;padding:10px 16px;border-radius:10px;background:var(--accent);color:#fff;text-decoration:none;font-weight:600;cursor:pointer;border:none;margin-top:10px}
+  .ghost{background:transparent;border:1px solid #ddd;color:#333}
+  .section{padding-top:10px}
+  .footer{text-align:center;color:var(--muted);padding:18px;font-size:14px}
+  #countdown{font-size:20px;font-weight:600;color:var(--accent);margin:15px 0}
+  @media(max-width:720px){.details{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<div class="container">
+  <div class="card">
+    <p style="margin:0;color:var(--muted)">With joy in our hearts</p>
+    <h1 class="names">Linta Premkumar & Nijo M. George</h1>
+    <p class="subtitle">Warmly invite you to their engagement ceremony.</p>
+
+    <!-- COUNTDOWN -->
+    <div id="countdown">Loading countdown...</div>
+
+    <!-- DETAILS -->
+    <div class="details">
+      <div class="detail">
+        <strong>Date & Time</strong>
+        <div>Monday, 29 December 2025<br>12:00 PM IST</div>
+      </div>
+      <div class="detail">
+        <strong>Venue</strong>
+        <div>All Saints' CSI Church Thrissur</div>
+      </div>
+    </div>
+
+    <!-- CONTACT -->
+    <div style="margin-top:14px">
+      <strong>Contact</strong><br>
+      <span style="color:var(--muted)">
+       <strong>Contacts:</strong><br>
+	Premkumar: <a href="tel:9447087608">9447087608</a><br>
+	Bindu: <a href="tel:9447668506">9447668506</a><br>
+	Linta: <a href="tel:8547320967">8547320967</a>
+      </span>
+    </div>
+
+    <!-- BUTTONS -->
+    <div style="margin-top:18px">
+      <a class="btn" href="https://calendar.app.google/SVD9sJH1sH3HXeXr7" target="_blank">Let us know your presence</a><br><br>
+      <strong>Location</strong><br>
+      <a class="btn ghost" href="https://maps.app.goo.gl/kCwT8dfpGpcQ9FX99" target="_blank" style="margin-left:10px">church</a>
+    </div>
+
+    <div class="footer">
+      Bless us with your presence.
+    </div>
+  </div>
+</div>
+
+<script>
+  const countdownEl = document.getElementById("countdown");
+  const weddingDate = new Date("2026-01-15T11:00:00+05:30").getTime();
+
+  function updateCountdown(){
+    const now = new Date().getTime();
+    const diff = weddingDate - now;
+
+    if(diff <= 0){
+      countdownEl.innerHTML = "❤️ Wedding Day ❤️";
+      return;
+    }
+
+    const d = Math.floor(diff / (1000*60*60*24));
+    const h = Math.floor((diff % (1000*60*60*24)) / (1000*60*60));
+    const m = Math.floor((diff % (1000*60*60)) / (1000*60));
+
+    countdownEl.innerHTML = `${d} days ${h} hrs ${m} mins`;
+  }
+  setInterval(updateCountdown, 1000);
+  updateCountdown();
+</script>
+
+</body>
+</html>
